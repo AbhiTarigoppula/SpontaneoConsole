@@ -18,10 +18,12 @@ public class Spontaneo {
        System.out.println("First we need some details to be able to plan out your trip");
 
        try {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         } catch (InterruptedException e) {
             System.out.println("Thread did not work");
         }
+
+        System.out.println();
 
        String city = askCity(console);
        int budget = askBudget(console);
