@@ -107,6 +107,17 @@ public class Spontaneo {
         return vibeAnswer;
     }    
 
+    // Converts number budget to string budget
+    public static String convertBudget(int budgetNumber) {
+        if (budgetNumber == 1) {
+            return "high";
+        } else if (budgetNumber == 2) {
+            return "medium";
+        } else {
+            return "low";
+        }
+    }    
+
 
     public static List<Activity> findMatches(List<Activity> activities, String budget, String locationType, String vibe) {
         List<Activity> list = new ArrayList<>();
@@ -115,7 +126,16 @@ public class Spontaneo {
 
 
     // Bonus Challenges
-    public static void bonus(Scanner console) {
+    public static void bonus(String vibe) {
+        System.out.println();
+        System.out.println("Bonus Challenge:");
 
+        if (vibe.equals("adventurous")) {
+            System.out.println("Talk to one new person while you're out.");
+        } else if (vibe.equals("chill")) {
+            System.out.println("Put your phone away for 30 minutes.");
+        } else {
+            System.out.println("Try something different today.");
+        }
     }
 }

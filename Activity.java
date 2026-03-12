@@ -45,7 +45,7 @@ public class Activity {
 
     @Override
     public String toString() {
-        return "";
+        return name + " [" + budget + ", " + locationType + ", " + vibe + "]";
     }
 
 }
