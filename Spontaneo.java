@@ -109,12 +109,13 @@ public class Spontaneo {
 
     // Converts number budget to string budget
     public static String convertBudget(int budgetNumber) {
-        if (budgetNumber == 1) {
-            return "high";
-        } else if (budgetNumber == 2) {
-            return "medium";
-        } else {
-            return "low";
+        switch (budgetNumber) {
+            case 1:
+                return "high";
+            case 2:
+                return "medium";
+            default:
+                return "low";
         }
     }    
 
@@ -131,9 +132,9 @@ public class Spontaneo {
         System.out.println("Bonus Challenge:");
 
         if (vibe.equals("adventurous")) {
-            System.out.println("Talk to one new person while you're out.");
+            System.out.println("Talk to a stranger and ask to hang out with them while you're out.");
         } else if (vibe.equals("chill")) {
-            System.out.println("Put your phone away for 30 minutes.");
+            System.out.println("Put your phone away for the entire day.");
         } else {
             System.out.println("Try something different today.");
         }
