@@ -122,6 +122,15 @@ public class Spontaneo {
 
     public static List<Activity> findMatches(List<Activity> activities, String budget, String locationType, String vibe) {
         List<Activity> list = new ArrayList<>();
+
+        for (Activity activity : activities) {
+            if (activity.getBudget().equals(budget)
+                    && activity.getLocationType().equals(locationType)
+                    && activity.getVibe().equals(vibe)) {
+                list.add(activity);
+            }
+        }
+
         return list;
     }
 
