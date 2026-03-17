@@ -25,14 +25,33 @@ public class Spontaneo {
 
         System.out.println();
 
-       String city = askCity(console);
-       int budget = askBudget(console);
-       console.nextLine();
-       String location = askLocation(console);
-       String vibe = askVibe(console);
+        String city = askCity(console);
+        int budgetNumber = askBudget(console);
+        console.nextLine();
+        String location = askLocation(console);
+        String vibe = askVibe(console);
 
+        String budget = convertBudget(budgetNumber);
 
-              
+        List<Activity> matches = findMatches(activities, budget, location, vibe);
+
+        if (matches.isEmpty()) {
+            System.out.println();
+            System.out.println("Sorry, no matching activities were found.");
+            System.out.println("Try different preferences next time.");
+        } else {
+            int randomIndex = random.nextInt(matches.size());
+            Activity chosenActivity = matches.get(randomIndex);
+
+            System.out.println();
+            System.out.println("City: " + city);
+            System.out.println("Your spontaneous suggestion is:");
+            System.out.println(chosenActivity);
+        }
+
+        bonus();
+
+        console.close();
     }
 
     // Adding activities to the list
@@ -124,9 +143,7 @@ public class Spontaneo {
         List<Activity> list = new ArrayList<>();
 
         for (Activity activity : activities) {
-            if (activity.getBudget().equals(budget)
-                    && activity.getLocationType().equals(locationType)
-                    && activity.getVibe().equals(vibe)) {
+            if (activity.getBudget().equals(budget) && activity.getLocationType().equals(locationType) && activity.getVibe().equals(vibe)) {
                 list.add(activity);
             }
         }
@@ -136,16 +153,56 @@ public class Spontaneo {
 
 
     // Bonus Challenges
-    public static void bonus(String vibe) {
-        System.out.println();
-        System.out.println("Bonus Challenge:");
+    public static void bonus() {
 
-        if (vibe.equals("adventurous")) {
-            System.out.println("Talk to a stranger and ask to hang out with them while you're out.");
-        } else if (vibe.equals("chill")) {
-            System.out.println("Put your phone away for the entire day.");
-        } else {
-            System.out.println("Try something different today.");
+        Random random = new Random();
+
+        String[] actions = {
+            "Start a conversation with",
+            "Ask",
+            "Introduce yourself to",
+            "Compliment",
+            "Get a recommendation from"
+        };
+
+        String[] people = {
+            "a stranger",
+            "someone sitting nearby",
+            "a worker there",
+            "someone exploring the area",
+            "another visitor"
+        };
+
+        String[] topics = {
+            "their favorite place in this city",
+            "what they like doing around here",
+            "a hidden gem nearby",
+            "their favorite food spot",
+            "something fun to do tonight"
+        };
+
+        String[] adventureChallenges = {
+            "Flip a coin to decide your next place to go.",
+            "Walk for 10 minutes in a random direction and explore whatever you find.",
+            "Enter a place you normally wouldn't go into and look around.",
+            "Try food you've never tried before.",
+            "Walk around without your phone or translator for the entire day."
+        };
+
+        System.out.println();
+        System.out.println("Spontaneo Comfort Zone Challenge:");
+
+        int type = random.nextInt(2);
+
+        if (type == 0) {
+            String action = actions[random.nextInt(actions.length)];
+            String person = people[random.nextInt(people.length)];
+            String topic = topics[random.nextInt(topics.length)];
+
+            System.out.println(action + " " + person + " and ask them about " + topic + ".");
+        } 
+        else {
+            System.out.println(adventureChallenges[random.nextInt(adventureChallenges.length)]);
         }
     }
 }
